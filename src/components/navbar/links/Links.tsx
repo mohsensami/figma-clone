@@ -25,27 +25,17 @@ const links = [
 ];
 
 const Links = () => {
-    const [open, setOpen] = useState(false);
-
     // TEMPORARY
     // const session = true;
     // const isAdmin = true;
 
     return (
         <div>
-            <div>
+            <div className="flex gap-3">
                 {links.map((link) => (
                     <NavLink item={link} key={link.title} />
                 ))}
             </div>
-            <Image src="/menu.png" alt="" width={30} height={30} onClick={() => setOpen((prev) => !prev)} />
-            {open && (
-                <div>
-                    {links.map((link) => (
-                        <NavLink item={link} key={link.title} />
-                    ))}
-                </div>
-            )}
         </div>
     );
 };
