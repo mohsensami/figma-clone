@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import NavLink from './navLink/NavLink';
+import NavLink from './navLink/navLink';
 import Image from 'next/image';
 
 const links = [
