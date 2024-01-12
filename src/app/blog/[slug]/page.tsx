@@ -1,4 +1,5 @@
-import React from 'react';
+import PostUser from '@/components/postUser/postUser';
+import React, { Suspense } from 'react';
 
 const getPost = async (slug: any) => {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`, {
@@ -17,6 +18,9 @@ export default async function SingleBlog({ params }: any) {
     return (
         <div>
             <h1>{post.title}</h1>
+            <Suspense fallback={<div>Loading...</div>}>
+                <PostUser userId={post.userId} />
+            </Suspense>
         </div>
     );
 }
