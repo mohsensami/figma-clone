@@ -15,9 +15,7 @@ import { getPosts } from '@/lib/data';
 
 export default async function Blog() {
     // const posts = await getPosts();
-
     const posts = await getPosts();
-    console.log(posts);
     return (
         <>
             <h1>Blog</h1>
