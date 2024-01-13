@@ -2,6 +2,15 @@ import PostUser from '@/components/postUser/postUser';
 import React, { Suspense } from 'react';
 import { getPost } from '@/lib/data';
 
+export const generateMetadata = async ({ params }: any) => {
+    const { slug } = params;
+    const post = await getPost(slug);
+    return {
+        title: post.title,
+        descriptin: post.description,
+    };
+};
+
 // FETCH DATA WITH AN API
 // const getPost = async (slug: any) => {
 //     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`, {
