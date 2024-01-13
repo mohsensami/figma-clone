@@ -1,18 +1,21 @@
 import PostCard from '@/components/postCard/postCard';
-import React from 'react';
+import { getPosts } from '@/lib/data';
 
-const getPosts = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        cache: 'no-store',
-        // next: { revalidate: 60000 },
-    });
-    if (!res.ok) {
-        throw new Error('Something went wrong');
-    }
-    return res.json();
-};
+// FETCH DATA WITH AN API
+// const getPosts = async () => {
+//     const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+//         cache: 'no-store',
+//         // next: { revalidate: 60000 },
+//     });
+//     if (!res.ok) {
+//         throw new Error('Something went wrong');
+//     }
+//     return res.json();
+// };
 
 export default async function Blog() {
+    // const posts = await getPosts();
+
     const posts = await getPosts();
     console.log(posts);
     return (
