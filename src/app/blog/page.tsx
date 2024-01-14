@@ -1,5 +1,5 @@
 import PostCard from '@/components/postCard/postCard';
-import { getPosts } from '@/lib/data';
+// import { getPosts } from '@/lib/data';
 
 import type { Metadata } from 'next';
 
@@ -9,20 +9,19 @@ export const metadata: Metadata = {
 };
 
 // FETCH DATA WITH AN API
-// const getPosts = async () => {
-//     const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
-//         cache: 'no-store',
-//         // next: { revalidate: 60000 },
-//     });
-//     if (!res.ok) {
-//         throw new Error('Something went wrong');
-//     }
-//     return res.json();
-// };
+const getData = async () => {
+    const res = await fetch('http://localhost:3000/api/blog', { next: { revalidate: 3600 } });
+
+    if (!res.ok) {
+        throw new Error('Something went wrong');
+    }
+
+    return res.json();
+};
 
 export default async function Blog() {
     // const posts = await getPosts();
-    const posts = await getPosts();
+    const posts = await getData();
     return (
         <>
             <h1>Blog</h1>
