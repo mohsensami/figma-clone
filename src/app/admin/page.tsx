@@ -1,25 +1,39 @@
-import { addPost, deletePost } from '@/lib/action';
+import { Suspense } from 'react';
 
-const Admin = () => {
-    // const actionInComponent = async ()=>{
-    //   "use server"
-    //   console.log("it works!")
-    // }
+import AdminPosts from '@/components/adminPosts/adminPosts';
+import AdminPostForm from '@/components/adminPostForm/adminPostForm';
+import AdminUsers from '@/components/adminUsers/adminUsers';
+import AdminUserForm from '@/components/adminUserForm/adminUserForm';
+import { auth } from '@/lib/auth';
+
+const Admin = async () => {
+    const session = await auth();
 
     return (
         <div>
-            <form action={addPost}>
-                <input type="text" placeholder="title" name="title" />
-                <input type="text" placeholder="desc" name="desc" />
-                <input type="text" placeholder="slug" name="slug" />
-                <input type="text" placeholder="userId" name="userId" />
-                <button>Create</button>
-            </form>
-
-            <form action={deletePost}>
-                <input type="text" placeholder="postId" name="id" />
-                <button>Delete</button>
-            </form>
+            <div>
+                <div>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <AdminPosts />
+                    </Suspense>
+                </div>
+                <div>
+                    <AdminPostForm userId={session?.user.id} />
+                </div>
+            </div>
+            <div>
+                <div>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <AdminUsers />
+                    </Suspense>
+                </div>
+                <div>
+                    <AdminUserForm />
+                </div>
+            </div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, dolore quos quo repellendus alias
+            aliquam, est et, iure reiciendis harum excepturi ea soluta minima odio repudiandae distinctio eaque delectus
+            dolores.
         </div>
     );
 };
