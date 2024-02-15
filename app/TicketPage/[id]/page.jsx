@@ -1,7 +1,12 @@
+import EditTicketForm from '@/app/(components)/EditTicketForm';
 import React from 'react';
 
 const TicketSinglePage = ({ params }) => {
-    return <div>TicketSinglePage {params.id}</div>;
+    return (
+        <div>
+            <EditTicketForm />
+        </div>
+    );
 };
 
 export default TicketSinglePage;
