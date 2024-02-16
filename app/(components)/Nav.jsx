@@ -15,6 +15,10 @@ const Nav = async () => {
                 <Link href="/TicketPage/new">
                     <FontAwesomeIcon icon={faTicket} className="icon" />
                 </Link>
+                <Link href="/CreateUser">Create User</Link>
+                <Link href="/ClientMember">Client Member</Link>
+                <Link href="/Member">Member</Link>
+                <Link href="/Public">Public</Link>
             </div>
             <div className="text-white">
                 {session ? (
